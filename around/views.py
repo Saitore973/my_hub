@@ -1,12 +1,12 @@
 from webbrowser import get
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from . forms import CreateUserForm
+from . forms import CreateUserForm, userProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from . forms import NeighbourhoodForm
-from . models import userProfile, Neighborhood
+
+from . models import Profile, Neighborhood
 # Create your views here.
 
 @login_required(login_url='login')
@@ -49,7 +49,7 @@ def logoutUser(request):
     return redirect('login')
 
 def neighborhood(request):
-    Neighborhood = userProfile.objects.get(user=request.user)
+    Neighborhood = Profile.objects.get(user=request.user)
     form = NeighbourhoodForm()
     mainform = CreateUserForm(instance=request.user.profile)
     if request.method == 'POST':
@@ -68,3 +68,16 @@ def neighborhood(request):
             mainform.save()
             return redirect('profile')
     return render(request, 'all/user.html',{"name":"userProfile","form":form,"mainform":mainform,"userProfile":userProfile})
+
+def accountSettings(request):
+	Profile = request.user
+	form = userProfileForm(instance=Profile)
+
+	if request.method == 'POST':
+		form = userProfileForm(request.POST, request.FILES,instance=Profile)
+		if form.is_valid():
+			form.save()
+
+
+	context = {'form':form}
+	return render(request, 'all/settings.html', context)
