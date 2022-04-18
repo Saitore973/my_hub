@@ -8,7 +8,7 @@ urlpatterns = [
     path('login/', views.loginPage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
     path('user/', views.neighborhood, name="neighbourhood"),
-    # path('hood/', views.neighbourdisplay, name="hood"),
+    path('hood/', views.neighbourdisplay, name="hood"),
     path('account/', views.accountSettings, name="account")
 ]
 

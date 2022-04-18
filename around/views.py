@@ -30,9 +30,7 @@ def registerPage(request):
         if form.is_valid():
             form.save()
             user=form.cleaned_data.get("username")
-            Profile.objects.create(
-                user=user,
-            )
+           
             messages.success(request, 'Account succefuly created for'+ user)
             return redirect('login')
     context = {'form':form}
@@ -74,19 +72,11 @@ def neighborhood(request):
     return render(request, 'all/neighbourhood.html', {'form':form, })
     
 def neighbourdisplay(request):
-    neighbours =Neighborhood.objects.all()
-    form=NeighbourhoodForm(request.POST, request.FILES)
-    if form.is_valid():
-            name=form.cleaned_data['name']
-            location=form.cleaned_data['location']
-            image=form.cleaned_data['image']
-
-            created=Neighborhood(name=name,location=location,image=image, user=request.user)
-            created.save()
-    return render(request, 'all/hood.html', {'form':form, 'neighbours':neighbours})
+    
+    return render(request, 'all/hood.html',)
 
 def accountSettings(request):
-	Profile = request.user.profile
+	Profile = request.user
 	form = userProfileForm(instance=Profile)
 
 	if request.method == 'POST':
