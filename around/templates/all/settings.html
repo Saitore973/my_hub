@@ -31,12 +31,18 @@
 			<form method="POST" action="" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{form.as_p}}
-		
 			<input class="btn btn-primary" type="submit" name="Update Information">
 			</form>
 		</div>
 	</div>
+
 </div>
+
+{% for post in request.user.projects.all %}
+<img src="{{post.image.url}}" alt="">
+{{post.name}}
+
+{% endfor %}
 
 
 </div>

@@ -76,7 +76,7 @@ def neighbourdisplay(request):
     return render(request, 'all/hood.html',)
 
 def accountSettings(request):
-	Profile = request.user
+	Profile = request.user.profile
 	form = userProfileForm(instance=Profile)
 
 	if request.method == 'POST':

@@ -4,57 +4,19 @@
 
 
 {% block content %}
+<style>
+    
+</style>
 <h1>yoh</h1>
 {% for neighbour in neighbours%}
 <div class="container ">
     <div class="row">
-        <div class="col-md-4">
-            <button>JOIN HOOD</button>
-        </div>
+        
         <div class="col-md-4">
 
             <img src="{{ neighbour.image.url}}" class="img-fluid" alt="">
             <p><a href="{% url 'hood' %}"></a> {{neighbour.name}}</a></p>
-            <span class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                <span class="modal-dialog modal-dialog-centered">
-                    <span class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Show a second modal and hide this one with the button below.
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
-                                data-bs-toggle="modal">Open second
-                                modal</button>
-                        </div>
-                    </span>
-                </span>
-            </span>
-            <span class="modal fade" id="exampleModalToggle2" aria-hidden="true"
-                aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Hide this modal and show the first with the button below.
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle"
-                                data-bs-toggle="modal">Back to
-                                first</button>
-                        </div>
-                    </div>
-                </div>
-            </span>
-            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first
-                modal</a>
+            
         </div>
         
     </div>
