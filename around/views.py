@@ -1,7 +1,7 @@
 from webbrowser import get
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from . forms import CreateUserForm, userProfileForm
+from . forms import CreateUserForm, userProfileForm, NeighbourhoodForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -11,7 +11,16 @@ from . models import Profile, Neighborhood
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'index.html')
+    neighbours =Neighborhood.objects.all()
+    form=NeighbourhoodForm(request.POST, request.FILES)
+    if form.is_valid():
+            name=form.cleaned_data['name']
+            location=form.cleaned_data['location']
+            image=form.cleaned_data['image']
+
+            created=Neighborhood(name=name,location=location,image=image, user=request.user)
+            created.save()
+    return render(request, 'index.html', {'form':form, 'neighbours':neighbours})
 
 def registerPage(request):
     form = CreateUserForm()
@@ -21,7 +30,7 @@ def registerPage(request):
         if form.is_valid():
             form.save()
             user=form.cleaned_data.get("username")
-            userProfile.objects.create(
+            Profile.objects.create(
                 user=user,
             )
             messages.success(request, 'Account succefuly created for'+ user)
@@ -49,28 +58,35 @@ def logoutUser(request):
     return redirect('login')
 
 def neighborhood(request):
-    Neighborhood = Profile.objects.get(user=request.user)
     form = NeighbourhoodForm()
-    mainform = CreateUserForm(instance=request.user.profile)
+   
     if request.method == 'POST':
-        form = NeighbourhoodForm(request.POST, request.FILES)
+        form=NeighbourhoodForm(request.POST, request.FILES)
         if form.is_valid():
-            user = request.user
-            name = form.cleaned_data['name']
-            location = form.cleaned_data['location']
-            image = form.cleaned_data['image']
-            created_project = Neighborhood(name=name,location=location,image=image,user=user)
-            created_project.save()
-            return redirect('home')
-    if request.method == 'POST':
-        mainform = CreateUserForm(request.POST, request.FILES, instance=request.user.profile)
-        if mainform.is_valid():
-            mainform.save()
-            return redirect('profile')
-    return render(request, 'all/user.html',{"name":"userProfile","form":form,"mainform":mainform,"userProfile":userProfile})
+            name=form.cleaned_data['name']
+            location=form.cleaned_data['location']
+            image=form.cleaned_data['image']
+
+            created=Neighborhood(name=name,location=location,image=image, user=request.user)
+            created.save()
+
+        
+    return render(request, 'all/neighbourhood.html', {'form':form, })
+    
+def neighbourdisplay(request):
+    neighbours =Neighborhood.objects.all()
+    form=NeighbourhoodForm(request.POST, request.FILES)
+    if form.is_valid():
+            name=form.cleaned_data['name']
+            location=form.cleaned_data['location']
+            image=form.cleaned_data['image']
+
+            created=Neighborhood(name=name,location=location,image=image, user=request.user)
+            created.save()
+    return render(request, 'all/hood.html', {'form':form, 'neighbours':neighbours})
 
 def accountSettings(request):
-	Profile = request.user
+	Profile = request.user.profile
 	form = userProfileForm(instance=Profile)
 
 	if request.method == 'POST':
@@ -80,4 +96,5 @@ def accountSettings(request):
 
 
 	context = {'form':form}
+    
 	return render(request, 'all/settings.html', context)

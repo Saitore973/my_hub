@@ -15,3 +15,11 @@ class userProfileForm(ModelForm):
         fields= '__all__'
         exclude = ['user']
 
+class NeighbourhoodForm(ModelForm):
+    class Meta:
+        model = Neighborhood
+        fields= '__all__'
+        exclude = ['user']
+       
+
+

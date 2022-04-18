@@ -8,7 +8,7 @@ class Profile(models.Model):
     fullname = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
     bio = models.TextField(max_length=500, blank=True)
-    profile_pic = CloudinaryField('image')
+    profile_pic = CloudinaryField( 'image',null=True, blank=True)
     
     def __str__(self):
         return self.user.username
@@ -25,5 +25,5 @@ class Neighborhood(models.Model):
         ordering = ['-created', '-updated']
     
     def __str__(self):
-        return self.title
+        return self.name
     
