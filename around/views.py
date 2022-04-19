@@ -1,12 +1,12 @@
 from webbrowser import get
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from . forms import CreateUserForm, userProfileForm, NeighbourhoodForm
+from . forms import CreateUserForm, userProfileForm, NeighbourhoodForm, BusinessForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from . models import Profile, Neighborhood
+from . models import Profile, Neighborhood, Business
 # Create your views here.
 
 @login_required(login_url='login')
@@ -55,6 +55,7 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
+
 def neighborhood(request):
     form = NeighbourhoodForm()
    
@@ -88,6 +89,21 @@ def accountSettings(request):
 	context = {'form':form}
     
 	return render(request, 'all/settings.html', context)
+
+
+def business(request):
+    neighbours =Business.objects.all()
+    form=BusinessForm(request.POST, request.FILES)
+    if form.is_valid():
+            name=form.cleaned_data['name']
+            email=form.cleaned_data['email']
+            description=form.cleaned_data['description']
+
+            created=Business(name=name,email=email,description=description, user=request.user)
+            created.save()
+    return render(request, 'all/business.html', {'form':form, 'neighbours':neighbours})
+
+
 
 def hoods(request):
     all_hoods = Neighborhood.objects.all()

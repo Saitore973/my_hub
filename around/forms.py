@@ -22,4 +22,11 @@ class NeighbourhoodForm(ModelForm):
         exclude = ['user']
        
 
+class BusinessForm(ModelForm):
+    class Meta:
+        model = Neighborhood
+        fields= '__all__'
+        
+       
+
 
