@@ -88,3 +88,12 @@ def accountSettings(request):
 	context = {'form':form}
     
 	return render(request, 'all/settings.html', context)
+
+def hoods(request):
+    all_hoods = Neighborhood.objects.all()
+    all_hoods = all_hoods[::-1]
+    params = {
+        'all_hoods': all_hoods,
+    }
+    return render(request, 'all_hoods.html', params)
+

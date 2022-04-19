@@ -5,21 +5,24 @@
 
 {% block content %}
 <style>
-    
+
 </style>
 <h1>yoh</h1>
-{% for neighbour in neighbours%}
-<div class="container ">
-    <div class="row">
-        
-        <div class="col-md-4">
 
-            <img src="{{ neighbour.image.url}}" class="img-fluid" alt="">
-            <p><a href="{% url 'hood' %}"></a> {{neighbour.name}}</a></p>
-            
+<div class="row">
+        {% for neighbour in neighbours%}
+        <div class="col-md-4">
+            <div class="card mb-4" style="min-height:340px">
+                <img src="{{ neighbour.image.url}}" class="img-fluid" alt="{{ neighbour.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ neighbour.name }}</h5>  ({{neighbour.location}}) <span class="ml-4">{{hood.members.count}} member{{hood.members.count|pluralize}}</span></h5>
+                    
+                    <button>Join hood</button>
+                </div>
+            </div>
         </div>
-        
+        {% endfor %}
     </div>
-</div>
-{% endfor %}
+
+
 {% endblock %}

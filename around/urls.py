@@ -10,6 +10,7 @@ urlpatterns = [
     path('user/', views.neighborhood, name="neighbourhood"),
     path('hood/', views.neighbourdisplay, name="hood"),
     path('account/', views.accountSettings, name="account")
+    
 ]
 
 if settings.DEBUG:
