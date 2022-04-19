@@ -60,7 +60,17 @@
         text-align: center
     }
     h1{
-        padding-top:200px
+        padding-top:200px;
+        line-height:65px;
+    }
+
+    .buttn {
+        background-color: #9E9FCD;
+        padding: 10px 15px;
+        border: none;
+        border-radius:20px;
+       margin-top:100px;
+       color: rgb(216, 199, 114);
     }
 
 </style>
@@ -70,17 +80,17 @@
         <h1>
             Want to be at the loop of whats happening around you? Join in!
         </h1>
-        <button>
+       <a href="{% url 'home' %}"> <button class="buttn">
             Explore Neighbourhoods
-        </button>
+        </button></a>
     </div>
     <div class="col-md-4 circle">
 
-        <img class="circle" src="https://media.istockphoto.com/photos/residential-community-in-western-usa-with-modern-homes-at-sunrise-picture-id1337285643?b=1&k=20&m=1337285643&s=170667a&w=0&h=Cr6dyN6gg4UtnuW__-YW1wxITO5JNykJSNo3FlFtYCY=" alt="">
+        <img class="circle img-fluid" src="https://media.istockphoto.com/photos/residential-community-in-western-usa-with-modern-homes-at-sunrise-picture-id1337285643?b=1&k=20&m=1337285643&s=170667a&w=0&h=Cr6dyN6gg4UtnuW__-YW1wxITO5JNykJSNo3FlFtYCY=" alt="">
     </div>
     <div class="col-md-4 circle">
 
-        <img class="circle" src="https://media.istockphoto.com/photos/new-homes-on-a-quiet-street-in-raleigh-nc-picture-id1319269543?b=1&k=20&m=1319269543&s=170667a&w=0&h=9Nv2yeDkHR01ADDhxcY4A1PZx9veOOwPRVnNXT6Jk3c=" alt="">
+        <img class="circle img-fluid" src="https://media.istockphoto.com/photos/new-homes-on-a-quiet-street-in-raleigh-nc-picture-id1319269543?b=1&k=20&m=1319269543&s=170667a&w=0&h=9Nv2yeDkHR01ADDhxcY4A1PZx9veOOwPRVnNXT6Jk3c=" alt="">
     </div>
 </div>
 </div>
