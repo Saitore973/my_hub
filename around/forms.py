@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-from . models import  Neighborhood, Profile
+from . models import  Neighborhood, Profile, Business
 
 class CreateUserForm(UserCreationForm):
     class Meta:
@@ -24,8 +24,9 @@ class NeighbourhoodForm(ModelForm):
 
 class BusinessForm(ModelForm):
     class Meta:
-        model = Neighborhood
+        model = Business
         fields= '__all__'
+        exclude = ['user']
         
        
 

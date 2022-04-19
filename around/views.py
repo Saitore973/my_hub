@@ -103,7 +103,21 @@ def business(request):
             created.save()
     return render(request, 'all/business.html', {'form':form, 'neighbours':neighbours})
 
+def businessedit(request):
+    form = BusinessForm()
+   
+    if request.method == 'POST':
+        form=BusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            name=form.cleaned_data['name']
+            email=form.cleaned_data['email']
+            description=form.cleaned_data['description']
 
+            created=Business(name=name,email=email,description=description)
+            created.save()
+
+        
+    return render(request, 'all/edit.html', {'form':form, })
 
 def hoods(request):
     all_hoods = Neighborhood.objects.all()

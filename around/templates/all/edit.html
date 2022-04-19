@@ -1,0 +1,22 @@
+{% extends 'all/base.html' %} {% load static %} {% block head %}
+{% endblock %} {% block content %}
+<h1>Add a Business</h1>
+<form method="POST" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+
+  <input class="btn btn-primary" type="submit" name="Update Information">
+</form>
+{% for neighbour in neighbours%}
+<div class="row">
+  <div class="col-md-4">
+    {{neighbour.name}}
+  <img src="{{ neighbour.image.url}}" alt="">
+
+  </div>
+  
+</div>
+  
+  {% endfor %}
+
+{% endblock %}
