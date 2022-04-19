@@ -1,5 +1,18 @@
 {% extends 'all/base.html' %} {% load static %} {% block head %}
 {% endblock %} {% block content %}
+<style>
+  body {
+        background-image: url('https://images.unsplash.com/photo-1566305977571-5666677c6e98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGdyZXl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        text-align: center;
+        
+    }
+    h1{
+     padding-top: 180px;
+    }
+</style>
+<div class="container">
 <h1>Add a Neighbourhood</h1>
 <form method="POST" action="" enctype="multipart/form-data">
   {% csrf_token %}
@@ -18,5 +31,7 @@
 </div>
   
   {% endfor %}
+</div>
+
 
 {% endblock %}
