@@ -1,11 +1,35 @@
 {% extends 'all/base.html' %} {% load static %} {% block head %}
 {% endblock %} {% block content %}
+
+<style>
+  body {
+        background-image: url('https://images.unsplash.com/photo-1566305977571-5666677c6e98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGdyZXl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        text-align: center;
+        
+    }
+    h1{
+     padding-top: 180px;
+    }
+    .buttn {
+        background-color: #9E9FCD;
+        padding: 10px 5px;
+        border: none;
+        border-radius:20px;
+       margin: 30px;
+       color: rgb(230, 208, 103);
+    }
+</style>
 <h1>Add a Business</h1>
 <form method="POST" action="" enctype="multipart/form-data">
   {% csrf_token %}
   {{form.as_p}}
 
   <input class="btn btn-primary" type="submit" name="Update Information">
+  <button class="buttn">
+                            <a class="buttn " href="{% url 'business' %}">Back </a>
+                        </button>
 </form>
 {% for neighbour in neighbours%}
 <div class="row">
