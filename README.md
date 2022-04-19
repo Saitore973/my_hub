@@ -9,9 +9,16 @@ join a hood, one can see businesses and posts in only that wood they belong to.
  Click [View Site](https://jirany.herokuapp.com/login/)  to visit the site
   
 ## Screenshots 
-###### Home page
+###### Login
  
-<img src="https://ucarecdn.com/457f313d-4181-4d86-aca7-a91151d80707/hood.png">
+<img src="static/images/1.png" width="900px" height="440px">
+ 
+ ###### Home page
+<img src="static/images/2.png" width="900px" height="440px">
+
+###### Details
+<img src="static/images/3.png" width="900px" height="440px">
+
 
  
 ## User Story  
