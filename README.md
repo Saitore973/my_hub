@@ -3,7 +3,7 @@
 >[Saitore Virginia](https://github.com/Saitore973/my_hub.git)  
   
 # Description  
-Tis is a neighborhood app where a user must signup first, be able to join a hood owned by the hood admin, and once you 
+This is a neighborhood app where a user must signup first, be able to join a hood owned by the hood admin, and once you 
 join a hood, one can see businesses and posts in only that wood they belong to.  
 ##  Live Link  
  Click [View Site](https://jirany.herokuapp.com/login/)  to visit the site
@@ -86,4 +86,4 @@ If you have any question or contributions, please email me at [saitorevg@gmail.c
 ## License 
 
 * [![License](https://img.shields.io/packagist/l/loopline-systems/closeio-api-wrapper.svg)](https://github.com/Owiti-Charles/Picture-Globe/blob/master/LICENSE)  
-* Copyright (c) 2019 **Saitore Virginia**
+* Copyright (c) 2022 **Saitore Virginia**

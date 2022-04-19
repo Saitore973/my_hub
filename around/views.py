@@ -117,7 +117,7 @@ def businessedit(request):
             email=form.cleaned_data['email']
             description=form.cleaned_data['description']
 
-            created=Business(name=name,email=email,description=description)
+            created=Business(name=name,email=email,description=description, profile=request.profile)
             created.save()
 
         
@@ -131,3 +131,15 @@ def hoods(request):
     }
     return render(request, 'all_hoods.html', params)
 
+def search_results(request):
+
+    if 'neighbour' in request.GET and request.GET["neighbour"]:
+        search_term = request.GET.get("neighbour")
+        neighbours = Neighborhood.search_by_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all/search.html',{"message":message,"neighbours":neighbours})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all/search.html',{"message":message})

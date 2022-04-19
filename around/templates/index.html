@@ -43,7 +43,9 @@
                     <h5 class="card-title">{{ neighbour.name }}</h5> ({{neighbour.location}}) <span
                         class="ml-4">{{hood.members.count}} member{{hood.members.count|pluralize}}</span></h5>
 
-                    <button>Join hood</button>
+                    <button class="buttn" >
+    <a class="buttn" href="{% url 'business' %}">Join Hood</a>
+</button>
                 </div>
             </div>
         </div>

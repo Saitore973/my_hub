@@ -5,22 +5,56 @@
 
 {% block content %}
 
-<h1>yoh</h1>
+<style>
+    .buttn {
+        background-color: #9E9FCD;
+        padding: 10px 5px;
+        border: none;
+        border-radius: 20px;
+        margin: 30px;
+        color: rgb(230, 208, 103);
+    }
 
-<div class="row">
+    body {
+        background-image: url('https://images.unsplash.com/photo-1566305977571-5666677c6e98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGdyZXl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .card{
+        background-color:rgb(208, 176, 238);
+    }
+</style>
+<div class="container">
+    <h1></h1>
+
+    <div class="row">
         {% for business in businesses%}
         <div class="col-md-4">
             <div class="card mb-4" style="min-height:340px">
-                
+
                 <div class="card-body">
-                    <h5 class="card-title">{{ business.name }}</h5>  ({{neighbour.location}}) <span class="ml-4">{{hood.members.count}} member{{hood.members.count|pluralize}}</span></h5>
-                    
-                    <button>Join hood</button>
+                    <p>
+                        Some of the available businesses here are,..
+                    </p>
+                    <h5 class="card-title">{{ business.name }}</h5> {{business.description}} <span
+                        class="ml-4">{{hood.members.count}} </h5> <br> <br>
+
+                        <button class="buttn">
+                            <a class="buttn" href="{% url 'edit' %}">Add business</a>
+                        </button>
+                </div>
+                <div class="card-footer">
+                    <button class="buttn">
+                            <a class="buttn " href="{% url 'home' %}">Leave hood</a>
+                        </button>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+
+</div>
+
 
 
 {% endblock %}

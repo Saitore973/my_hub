@@ -26,7 +26,7 @@ class BusinessForm(ModelForm):
     class Meta:
         model = Business
         fields= '__all__'
-        exclude = ['user']
+        exclude = ['user', 'neighbourhood']
         
        
 

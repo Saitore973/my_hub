@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -12,7 +12,8 @@ urlpatterns = [
     path('edit/', views.businessedit, name="edit"),
     path('business/', views.business, name="business"),
     path('hood/', views.neighbourdisplay, name="hood"),
-    path('account/', views.accountSettings, name="account")
+    path('account/', views.accountSettings, name="account"),
+    re_path(r'^search/', views.search_results, name='search_results')
     
 ]
 

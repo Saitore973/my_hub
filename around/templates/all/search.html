@@ -1,0 +1,25 @@
+{%extends 'all/base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if neighbours%}
+      <h2>Found  {{ neighbours|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 neighbourhoods for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if neighbours %}
+    {% for neighbour in neighbours %}
+      <div class="col-sm-6 col-md-3">
+          <h1>{neighbour.title}}</h1>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}
