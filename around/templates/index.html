@@ -4,23 +4,44 @@
 
 
 {% block content %}
+<style>
+    h1 {
+        text-align: center;
+        padding: 20px;
+    }
+    .buttn {
+        background-color: #9E9FCD;
+        padding: 10px 5px;
+        border: none;
+        border-radius:20px;
+       margin: 30px;
+       color: rgb(230, 208, 103);
+    }
+    
+</style>
+<h1>Don't have a neighborhood? Add one!</h1>
+<button class="buttn" >
+    <a class="buttn" href="{% url 'neighbourhood' %}">Add Neighbourhood</a>
+</button>
 
-<h1>yoh</h1>
-
-<div class="row">
+<div class="container-fluid">
+    <div class="row">
         {% for neighbour in neighbours%}
         <div class="col-md-4">
             <div class="card mb-4" style="min-height:340px">
                 <img src="{{ neighbour.image.url}}" class="img-fluid" alt="{{ neighbour.name }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ neighbour.name }}</h5>  ({{neighbour.location}}) <span class="ml-4">{{hood.members.count}} member{{hood.members.count|pluralize}}</span></h5>
-                    
+                    <h5 class="card-title">{{ neighbour.name }}</h5> ({{neighbour.location}}) <span
+                        class="ml-4">{{hood.members.count}} member{{hood.members.count|pluralize}}</span></h5>
+
                     <button>Join hood</button>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+
+</div>
 
 
 {% endblock %}

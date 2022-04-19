@@ -28,11 +28,16 @@
         margin-right: 100px;
         padding-top:0px 10px;
     }
+    .top{
+        color:blueviolet;
+    }
 </style>
 
 
 <body>
     <section class="top">
+
+<div class="container">
 
 
 
@@ -52,9 +57,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account' %}">Edit Profile</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'neighbourhood' %}">Add Neighbourhood</a>
-                        </li>
                         
                         
                     </ul>
@@ -68,6 +70,7 @@
             </div>
             
         </nav>
+        </div>
     </section>
     </header>
     {% block content %} {% endblock %}
