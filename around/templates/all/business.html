@@ -1,1 +1,26 @@
-<h1>hello</h1>
+{% extends 'all/base.html' %} {% load static %} {% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<h1>yoh</h1>
+
+<div class="row">
+        {% for business in businesses%}
+        <div class="col-md-4">
+            <div class="card mb-4" style="min-height:340px">
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ business.name }}</h5>  ({{neighbour.location}}) <span class="ml-4">{{hood.members.count}} member{{hood.members.count|pluralize}}</span></h5>
+                    
+                    <button>Join hood</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

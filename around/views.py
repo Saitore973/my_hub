@@ -96,7 +96,7 @@ def accountSettings(request):
 
 
 def business(request):
-    neighbours =Business.objects.all()
+    businesses =Business.objects.all()
     form=BusinessForm(request.POST, request.FILES)
     if form.is_valid():
             name=form.cleaned_data['name']
@@ -105,7 +105,7 @@ def business(request):
 
             created=Business(name=name,email=email,description=description, user=request.user)
             created.save()
-    return render(request, 'all/business.html', {'form':form, 'neighbours':neighbours})
+    return render(request, 'all/business.html', {'form':form, 'businesses':businesses})
 
 def businessedit(request):
     form = BusinessForm()
